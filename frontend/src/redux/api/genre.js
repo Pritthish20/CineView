@@ -1,11 +1,11 @@
 import { apiSlice } from "./apiSlice";
-import { GENRE_URL } from "../constants";
+import { BASE_URL, GENRE_URL } from "../constants";
 
 export const genreApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     createGenre: builder.mutation({
       query: (newGenre) => ({
-        url: `${GENRE_URL}`,
+        url: `${BASE_URL}${GENRE_URL}`,
         method: "POST",
         body: newGenre,
       }),
@@ -13,7 +13,7 @@ export const genreApiSlice = apiSlice.injectEndpoints({
 
     updateGenre: builder.mutation({
       query: ({ id, updateGenre }) => ({
-        url: `${GENRE_URL}/${id}`,
+        url: `${BASE_URL}${GENRE_URL}/${id}`,
         method: "PUT",
         body: updateGenre,
       }),
@@ -21,14 +21,14 @@ export const genreApiSlice = apiSlice.injectEndpoints({
 
     deleteGenre: builder.mutation({
       query: (id) => ({
-        url: `${GENRE_URL}/${id}`,
+        url: `${BASE_URL}${GENRE_URL}/${id}`,
         method: "DELETE",
       }),
     }),
 
     fetchGenres: builder.query({
       query: () => ({
-          url:`${GENRE_URL}/genres`,
+          url:`${BASE_URL}${GENRE_URL}/genres`,
       }),
     }),
   }),

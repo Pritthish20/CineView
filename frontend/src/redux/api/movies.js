@@ -1,16 +1,16 @@
 import { apiSlice } from "./apiSlice";
-import { MOVIE_URL, UPLOAD_URL } from "../constants";
+import { BASE_URL,MOVIE_URL, UPLOAD_URL } from "../constants";
 
 export const moviesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
     getAllMovies: builder.query({
-      query: () => `${MOVIE_URL}/all-movies`,
+      query: () => `${BASE_URL}${MOVIE_URL}/all-movies`,
     }),
 
     createMovie: builder.mutation({
       query: (newMovie) => ({
-        url: `${MOVIE_URL}/create-movie`,
+        url: `${BASE_URL}${MOVIE_URL}/create-movie`,
         method: "POST",
         body: newMovie,
       }),
@@ -18,7 +18,7 @@ export const moviesApiSlice = apiSlice.injectEndpoints({
 
     updateMovie: builder.mutation({
       query: ({ id, updatedMovie }) => ({
-        url: `${MOVIE_URL}/update-movie/${id}`,
+        url: `${BASE_URL}${MOVIE_URL}/update-movie/${id}`,
         method: "PUT",
         body: updatedMovie,
       }),
@@ -26,7 +26,7 @@ export const moviesApiSlice = apiSlice.injectEndpoints({
 
     addMovieReview: builder.mutation({
       query: ({ id, rating, comment }) => ({
-        url: `${MOVIE_URL}/${id}/reviews`,
+        url: `${BASE_URL}${MOVIE_URL}/${id}/reviews`,
         method: "POST",
         body: { rating, id, comment },
       }),
@@ -34,7 +34,7 @@ export const moviesApiSlice = apiSlice.injectEndpoints({
 
     deleteComment: builder.mutation({
       query: ({ movieId, reviewId }) => ({
-        url: `${MOVIE_URL}/delete-comment`,
+        url: `${BASE_URL}${MOVIE_URL}/delete-comment`,
         method: "DELETE",
         body: { movieId, reviewId },
       }),
@@ -42,33 +42,33 @@ export const moviesApiSlice = apiSlice.injectEndpoints({
 
     deleteMovie: builder.mutation({
       query: (id) => ({
-        url: `${MOVIE_URL}/delete-movie/${id}`,
+        url: `${BASE_URL}${MOVIE_URL}/delete-movie/${id}`,
         method: "DELETE",
       }),
     }),
 
     getSpecificMovie: builder.query({
-      query: (id) => `${MOVIE_URL}/specific-movie/${id}`,
+      query: (id) => `${BASE_URL}${MOVIE_URL}/specific-movie/${id}`,
     }),
 
     uploadImage: builder.mutation({
       query: (formData) => ({
-        url: `${UPLOAD_URL}`,
+        url: `${BASE_URL}${UPLOAD_URL}`,
         method: "POST",
         body: formData,
       }),
     }),
 
     getNewMovies: builder.query({
-      query: () => `${MOVIE_URL}/new-movies`,
+      query: () => `${BASE_URL}${MOVIE_URL}/new-movies`,
     }),
 
     getTopMovies: builder.query({
-      query: () => `${MOVIE_URL}/top-movies`,
+      query: () => `${BASE_URL}${MOVIE_URL}/top-movies`,
     }),
 
     getRandomMovies: builder.query({
-      query: () => `${MOVIE_URL}/random-movies`,
+      query: () => `${BASE_URL}${MOVIE_URL}/random-movies`,
     }),
   }),
 });
