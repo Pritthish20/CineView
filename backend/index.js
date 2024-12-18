@@ -19,12 +19,16 @@ connectDB();
 
 const app=express();
 
+app.get("/", (req, res) => {
+  res.send("server is running fine");
+});
+
 
 //middleware
 
 app.use(
     cors({
-      origin: ["", "http://localhost:5173"],
+      origin: ["https://cine-view-ps.vercel.app", "http://localhost:5173"],
       credentials: true,
     })
   );

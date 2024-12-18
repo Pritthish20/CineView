@@ -1,19 +1,33 @@
-import express from 'express';
+import express from "express";
 
-// controllers 
-import {createUser,loginUser,logOutCurrentUser,getAllUsers,getProfile,updateProfile} from '../controllers/userController.js';
+// controllers
+import {
+  createUser,
+  loginUser,
+  logOutCurrentUser,
+  getAllUsers,
+  getProfile,
+  updateProfile,
+} from "../controllers/userController.js";
 // middleware
-import {authenticate,authenticateAsAdmin} from '../middlewares/authMiddleware.js';
+import {
+  authenticate,
+  authenticateAsAdmin,
+} from "../middlewares/authMiddleware.js";
 
-const userRoute=express.Router();
+const userRoute = express.Router();
 
-userRoute.route('/').post(createUser).get(authenticate,authenticateAsAdmin,getAllUsers);
+userRoute
+  .route("/")
+  .post(createUser)
+  .get(authenticate, authenticateAsAdmin, getAllUsers);
 
-userRoute.post('/auth',loginUser)
-userRoute.post('/logout',logOutCurrentUser)
+userRoute.post("/auth", loginUser);
+userRoute.post("/logout", logOutCurrentUser);
 
-userRoute.route('/profile',getProfile).get(authenticate,getProfile).put(authenticate,updateProfile)
-
-
+userRoute
+  .route("/profile")
+  .get(authenticate, getProfile)
+  .put(authenticate, updateProfile);
 
 export default userRoute;
