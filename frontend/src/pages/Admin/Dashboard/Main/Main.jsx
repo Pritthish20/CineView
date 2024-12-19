@@ -60,7 +60,7 @@ const Main = () => {
               image={movie.image}
               title={movie.name}
               date={movie.year}
-              rating={movie.rating}
+              rating={Math.round(movie.rating*10)/10}
               comments={movie.numReviews}
             />
           ))}

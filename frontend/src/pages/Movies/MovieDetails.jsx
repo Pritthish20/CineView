@@ -81,7 +81,7 @@ const MovieDetails = () => {
           <div className="mt-5">
             <h3 className="text-[#B0B0B0]">Rating</h3>
             <h2 className="flex text-3xl">
-              {movie?.rating}
+              {Math.round(movie?.rating*10)/10}
               <img src={star} alt="" className="w-6 ml-2" />
             </h2>
           </div>

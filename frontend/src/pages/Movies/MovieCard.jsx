@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
 
       <p className="flex text-xl justify-evenly absolute top-[85%] left-[2rem] right-0 bottom-0 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
         <p>{movie.name}</p>
-        {movie.numReviews ? <p className="flex flex-row">{movie.rating}
+        {movie.numReviews ? <p className="flex flex-row">{Math.round(movie.rating*10)/10}
           <img src={star} alt="" className="w-5 mb-5 ml-1" />
         </p> : ""}
         
