@@ -1,5 +1,6 @@
 import SecondaryCard from "./SecondaryCard";
 import VideoCard from "./VideoCard";
+import axios from "axios";
 
 import {
   useGetTopMoviesQuery,
@@ -8,6 +9,7 @@ import {
 
 import { useGetUsersQuery } from "../../../../redux/api/users";
 import RealTimeCard from "./RealTimeCard";
+import { useEffect } from "react";
 
 const Main = () => {
   const { data: topMovies } = useGetTopMoviesQuery();
@@ -19,6 +21,8 @@ const Main = () => {
     (acc, length) => acc + length,
     0
   );
+
+  //
 
   return (
     <div>

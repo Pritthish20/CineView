@@ -6,6 +6,7 @@ import asyncHandler from "./asyncHandler.js";
 const authenticate = asyncHandler(async(req,res,next)=>{
     let token;
     token=req.cookies.jwt;
+    console.log(req.cookies);
     if(token){
         try {
             //const { password, user } = User._doc

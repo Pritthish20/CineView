@@ -91,6 +91,7 @@ const UpdateMovie = () => {
       });
 
       navigate("/movies");
+      toast.success("Movie updated successfully");
     } catch (error) {
       console.error("Failed to update movie:", error);
     }

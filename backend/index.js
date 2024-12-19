@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import path from "path";
 import cors from "cors";
+import fs from "fs";
 
 
 
@@ -16,6 +17,13 @@ import uploadRoute from './routes/uploadRoute.js';
 //configuration
 dotenv.config();
 connectDB();
+
+// upload path
+const uploadsPath = path.join(path.resolve(), "../frontend/uploads");
+
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath);
+}
 
 const app=express();
 
@@ -47,8 +55,8 @@ app.use("/api/v1/genre",genreRoute);
 app.use("/api/v1/movies",movieRoute);
 app.use("/api/v1/upload",uploadRoute);
 
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
+// const __dirname = path.resolve();
+app.use("/uploads", express.static(uploadsPath));
 
 
 app.listen(port,()=>console.log(`server listening on port ${port}`));
