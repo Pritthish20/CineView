@@ -1,16 +1,13 @@
 import path from "path";
 import express from "express";
 import multer from "multer";
+import {uploadFile} from "../config/cloudinary.js";
 
 const router = express.Router();
 
 //upload path
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(path.resolve(), "../frontend/uploads"));
-  },
-
   filename: (req, file, cb) => {
     const extname = path.extname(file.originalname);
     cb(null, `${file.fieldname}-${Date.now()}${extname}`);
@@ -32,21 +29,29 @@ const fileFilter = (req, file, cb) => {
 };
 
 const upload = multer({ storage, fileFilter });
-const uploadSingleImage = upload.single("image");
+// const uploadSingleImage = upload.single("image");
 
-router.post("/", (req, res) => {
-  uploadSingleImage(req, res, (err) => {
-    if (err) {
-      res.status(400).send({ message: err.message });
-    } else if (req.file) {
-      res.status(201).send({
-        message: "Image uploaded successfully",
-        image: `uploads/${req.file.filename}`,
-      });
-    } else {
-      res.status(400).send({ message: "No image file provided" });
+router.post("/", upload.single("image"),async (req, res) => {
+   try {
+
+    if(!req.file){
+      res.status(400).send({message: "No Image Provided"});
     }
+
+    const result=await uploadFile(req.file.path)
+
+    // console.log(result);
+
+    res.status(201).send({
+      message: "Image Upload Successfully",
+      image:result.secure_url,
+    })
+
+
+    
+   } catch (error) {
+    res.status(500).send({message:"Image upload failed",error:error.message});
+   }
   });
-});
 
 export default router;

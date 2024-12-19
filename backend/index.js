@@ -19,11 +19,11 @@ dotenv.config();
 connectDB();
 
 // upload path
-const uploadsPath = path.join(path.resolve(), "../frontend/uploads");
+// const uploadsPath = path.join(path.resolve(), "../frontend/uploads");
 
-if (!fs.existsSync(uploadsPath)) {
-  fs.mkdirSync(uploadsPath);
-}
+// if (!fs.existsSync(uploadsPath)) {
+//   fs.mkdirSync(uploadsPath);
+// }
 
 const app=express();
 
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 app.use(
     cors({
-      origin: ["https://cine-view-ps.vercel.app", "http://localhost:5173"],
+      origin: ["https://cine-view-ps.vercel.app", "http://localhost:5173"], 
       credentials: true,
     })
   );
@@ -56,7 +56,7 @@ app.use("/api/v1/movies",movieRoute);
 app.use("/api/v1/upload",uploadRoute);
 
 // const __dirname = path.resolve();
-app.use("/uploads", express.static(uploadsPath));
+// app.use("/uploads", express.static(uploadsPath));
 
 
 app.listen(port,()=>console.log(`server listening on port ${port}`));
