@@ -14,9 +14,14 @@ const uploadFile = async(filePath) =>{
     try {
         const res=await cloudinary.uploader.upload(filePath,{
             folder:'CineView',
-            width:"1016",
-            height:"686",
-            allowed_formats:['png','jpg','jpeg', 'svg']
+            width:1080,
+            height:1620,
+            aspect_ratio: "2:3",
+            crop:"fill",
+            gravity:"auto",
+            allowed_formats:['png','jpg','jpeg', 'svg'],
+            quality: "auto",
+            format: "auto"
         }
         );
         // console.log(res);
