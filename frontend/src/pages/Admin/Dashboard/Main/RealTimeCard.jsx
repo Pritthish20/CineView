@@ -10,7 +10,7 @@ const RealTimeCard = () => {
       <p className="text-gray-500 mb-4">Update Live</p>
       <div className="border-t border-[#666] my-7"></div>
       <h2 className="text-2xl font-bold mb-2">{visitors?.length}</h2>
-      <p className="text-gray-500 mb-2">Latest Content</p>
+      <p className="text-gray-500 mb-2">Subscribe </p>
       <hr />
 
       <PrimaryCard />
