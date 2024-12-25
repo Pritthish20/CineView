@@ -27,6 +27,7 @@ const AdminMoviesList = () => {
                     <img
                       src={movie.image}
                       alt={movie.name}
+                      loading="lazy"
                       className="w-full h-48 object-cover"
                     />
                     <div className="px-6 py-4 border border-gray-400">

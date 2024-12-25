@@ -64,6 +64,7 @@ const MovieDetails = () => {
             src={movie?.image}
             alt={movie?.name}
             className="w-[55%] rounded"
+            loading="lazy"
           />
         </div>
         {/* Container One */}
