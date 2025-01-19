@@ -55,9 +55,16 @@ This project is designed to help users review and rate movies. It offers feature
 
 ## **Screenshots**
 
+#### Landing Page
 ![Homepage Screenshot](/assets/cineview%201.png)  
+
+#### Movie Seach and Filter
 ![Product Details Page Screenshot](/assets/cineview%202.png)  
+
+#### Admin dashboard
 ![Price Tracking Feature Screenshot](/assets/cineview%203.png)
+
+#### Movie Page
 ![Price Tracking Feature Screenshot](/assets/cineview%204.png)  
 
 <!-- (*Replace `#` with the URLs or paths to your screenshots in the repository*) -->
