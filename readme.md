@@ -48,6 +48,7 @@ This project is designed to help users review and rate movies. It offers feature
 ## **Demo**
 
 [Watch the Demo Video](https://drive.google.com/file/d/1KSPD81RM9JxwJI3a8TpQ86dnv4Qp3uEf/view?usp=sharing)  
+[Deployed Link](https://cine-view-ps.vercel.app/)
 <!-- (*Replace `#` with the link to your demo video*) -->
 
 ---
