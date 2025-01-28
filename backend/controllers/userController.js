@@ -8,7 +8,7 @@ const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    throw new Error("Please fill all required fields");
+    return res.status(400).send("Please fill all required fields");
   }
 
   const userExists = await User.findOne({ email });
